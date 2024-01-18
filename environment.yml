@@ -1,0 +1,13 @@
+name: mamba_env
+channels:
+  - conda-forge
+dependencies:
+  - numpy
+  - matplotlib
+  - numba
+  - spyder
+  - conda-forge::cython
+  - pip:
+    - bayesian-optimization
+    - "jax[cuda12_pip]@ https://storage.googleapis.com/jax-releases/jax_cuda_releases.html"
+
