@@ -1,0 +1,94 @@
+tohle jsou různé poznámky co jsem zkoušel.
+Na widnows se mi instalace s cudou nezadařila. Povedlo se mi až wls2. Udělám stručný návoda na wsl2 a cuda.
+
+
+https://jax.readthedocs.io/en/latest/installation.html#nvidia-gpu
+
+nefunguje:
+mamba install jaxlib=*=*cuda* jax cuda-nvcc -c conda-forge -c nvidia
+
+pokus2 - nefunguje:
+pip install --upgrade "jax[cuda12_local]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+
+
+podle https://github.com/cloudhan/jax-windows-builder?tab=readme-ov-file#the-manual-solution
+
+conda install nvidia/label/cuda-11.8.0::cuda
+pip install jax[cuda111] -f https://whls.blob.core.windows.net/unstable/index.html --use-deprecated legacy-resolver
+
+nic nefungovalo
+
+
+
+funkční:::
+mamba install cudatoolkit
+pip install nvidia-cudnn-cu12
+stahnout zhttps://whls.blob.core.windows.net/unstable/index.html a 
+pip install "C:\Users\vicar\Downloads\jaxlib-0.4.14+cuda12.cudnn89-cp311-cp311-win_amd64.whl"
+pip install jax==0.4.14  protoze to byla verze jaxlib
+tak to pořád nefunguje
+
+po conda install nvidia/label/cuda-11.8.0::cuda  funguje nvcc --version, ale říká to verzi 12.2 pro kterou není dostupný wheel...
+
+pořád nejde
+
+vidí cudu ale hodí chybu
+
+
+nvcc --version
+mamba install -c nvidia cudnn
+install anaconda::cudatoolkit
+conda install anaconda::cudnn
+
+conda install anaconda::cudnn==8.9 se pustilo
+
+
+
+další pokus:
+mamba install nvidia/label/cuda-12.1.1::cuda
+mamba install anaconda::cudnn
+pip install "C:\Users\vicar\Downloads\jaxlib-0.4.14+cuda12.cudnn89-cp311-cp311-win_amd64.whl"
+pip install jax==0.4.14
+
+
+
+nic nefunguje. Zkusím WSL2 - což píšou tady : https://jax.readthedocs.io/en/latest/installation.html#installing-jax
+Nainstaluju virtuální linux. Na tom to pak zkusím spustit.
+
+
+podle https://www.youtube.com/watch?v=_fntjriRe48&list=PLhfrWIlLOoKNMHhB39bh3XBpoLxV3f0V9&index=1
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+bash Mambaforge-Linux-x86_64.sh
+mambaforge/bin/mamba init
+mv /mnt/c/Mamba_cython_numba_test/Mamba_cython_numba_test/environment.yml .
+mamba env create --prefix mamba_env
+conda activate /home/tomas/test_jax/mamba_env
+
+
+https://www.youtube.com/watch?v=1HzYU2_t3yc ??
+
+nainstalovat vcxsrv https://sourceforge.net/projects/vcxsrv/ as spustit se zaskrtnutí allow cosi
+export DISPLAY=127.0.0.1:0.0
+a pak trebba xcalc pro instalaci  (apt-get install x11-apps) běží :)
+
+
+
+pomalý internet.
+
+v .wslconfig
+experimental.networkingMode=mirrored
+
+
+
+export PATH=/usr/local/cuda/bin:$PATH
+
+
+asi sem měl wsl verzi 1 kde cuda nefunguje
+
+
+wsl -l -v
+wsl --set-default-version 2
+wsl --set-version Ubuntu-20.04 2
+
+sudo snap install gnome-text-editor
+
