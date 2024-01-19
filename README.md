@@ -28,3 +28,8 @@ cuda
 - mamba activate  /home/.../mamba_env
 - pip install --upgrade "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html (podle https://jax.readthedocs.io/en/latest/installation.html)
 - spyder (mělo by se normálně otevřít okno a všechno fungovat)
+
+
+## další
+dobrý editor textu - gnome-text-editor
+inicializační skript kam dát export PATH=/usr/local/cuda/bin:$PATH ~/.bashrc
